@@ -10,11 +10,11 @@
 ### 树莓派
 发送端为rust编写，可以使用下面命令编译为可执行文件:
 ```sh
-cd server
+cd report
 cargo build --release
 ```
-编译完成之后可执行文件在 `~/server/target/release` 中.</br>
-如果你需要自行定义单片机的地址和端口，则更改 `~/server/src/main.rs`中的:
+编译完成之后可执行文件在 `~/report/target/release` 中.</br>
+如果你需要自行定义单片机的地址和端口，则更改 `~/report/src/main.rs`中的:
 ```rust
 const ADDR: &str = "192.168.3.6:8088";
 ```
