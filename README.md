@@ -1,14 +1,14 @@
 # RpiFanPwm
 
-树莓派通过UDP发送PWM指令控制风扇转速.
-硬件平台为`ESP8266`WIFI版本，树莓派为4B.
+树莓派通过`UDP`发送`PWM`指令控制风扇转速.
+硬件平台为`ESP8266`WIFI版本，树莓派为`4B`.
 > 因为通过树莓派直接PWM控制风扇一直不成功，我怀疑是树莓派的PWM引脚有些问题，所以只能绕路通过单片机硬件PWM，树莓派发送PWM数据到单片机.
 
 ![device](./device.jpg)
 
 
 ### 树莓派
-发送端为rust编写，可以使用下面命令编译为可执行文件:
+发送端为`Rust`编写，可以使用下面命令编译为可执行文件:
 ```sh
 cd report
 cargo build --release
@@ -25,7 +25,7 @@ const ADDR: &str = "192.168.3.6:8088";
 单片机为`Arduino IDE`工程，使用`Arduino IDE`直接打开即可.</br>
 不过需要注意的是，这里我使用的是`ESP8266`这个平台，如果你的硬件型号不一样，可以调整内部头文件或者代码.</br>
 
-源文件内部没有填写WIFI认证信息，你需要自行补齐:
+源文件内部没有填写`WIFI认证信息`，你需要自行补齐:
 ```c
 #ifndef STASSID
 #define STASSID ""
