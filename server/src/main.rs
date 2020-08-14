@@ -58,6 +58,6 @@ fn poll(socket: &mut UdpSocket) -> Result<()> {
 /// 
 /// UDP端口本地绑定为随机分配.
 fn main() -> Result<()> {
-    let mut socket = UdpSocket::bind("127.0.0.1:0")?;
+    let mut socket = UdpSocket::bind("0.0.0.0:0")?;
     loop { poll(&mut socket)? }
 }
