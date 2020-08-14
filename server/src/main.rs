@@ -1,6 +1,6 @@
 use anyhow::Result;
 use bytes::{BufMut, BytesMut};
-use std::{fs::File, io::Read, net::UdpSocket};
+use std::{fs, net::UdpSocket};
 use std::{thread::sleep, time::Duration};
 
 /// 远程地址
@@ -12,9 +12,8 @@ const ZONE_TEMP: &str = "/sys/class/thermal/thermal_zone0/temp";
 /// 
 /// 读取文件将温度转为摄氏度.
 fn temperature() -> Result<u16> {
-    let mut template = String::new();
-    let mut file = File::open(ZONE_TEMP)?;
-    file.read_to_string(&mut template)?;
+    let vec  = fs::read(ZONE_TEMP)?;
+    let template = String::from_utf8_lossy(&vec);
     let rate: u16 = template.trim().parse()?;
     Ok(rate / 1000)
 }
