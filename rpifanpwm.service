@@ -1,0 +1,15 @@
+[Unit]
+Description=Raspberry Pi CPU Fan PWM Control.
+Documentation=https://github.com/quasipaa/RpiFanPwm
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/rpifanpwm
+ExecReload=/usr/local/bin/rpifanpwm
+ExecStop=killall rpifanpwm
+TimeoutStartSec=0
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

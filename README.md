@@ -38,10 +38,20 @@ const ADDR: &str = "192.168.3.6:8088";
 const int SPEED = D2;
 const int PWM = D1;
 ```
+
 UDP端口:
 ```c
 unsigned int PORT = 8088;
 ```
+
+### 安装
+为了避免树莓派每次重启之后都需要手动启动进程的问题，
+你可以使用自动化脚本安装服务:
+```sh
+./install.sh
+systemdctl status rpifanpwm.service
+```
+服务将自动安装并开机启动.
 
 ### License
 [MIT](./LICENSE)
