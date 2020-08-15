@@ -16,7 +16,7 @@ cargo build --release
 编译完成之后可执行文件在 `~/report/target/release` 中.</br>
 如果你需要自行定义单片机的地址和端口，则更改 `~/report/src/main.rs`中的:
 ```rust
-const ADDR: &str = "192.168.3.6:8088";
+let addr = "192.168.3.6:8088";
 ```
 将此处替换为你的地址并重新编译.
 
