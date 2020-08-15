@@ -78,5 +78,5 @@ fn poll(socket: &mut UdpSocket, addr: &str) -> Result<()> {
 fn main() -> Result<()> {
     let addr = "192.168.3.6:8088";
     let mut socket = UdpSocket::bind("0.0.0.0:0")?;
-    loop { poll(&mut socket, addr).unwrap_or(()) }
+    loop { poll(&mut socket, addr)? }
 }
