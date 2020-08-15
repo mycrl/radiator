@@ -42,9 +42,11 @@ fn temperature() -> Result<f32> {
 /// 当温度大于或者等于70的时候为最高转速，
 /// 40-70之间按0-1023浮动.
 fn pwm(temperature: f32) -> u16 {
-    if temperature <= 40.0 { return 0 }
-    if temperature >= 70.0 { return 1024 }
-    ((temperature - 40.0) * 34.13) as u16
+    match temperature {
+        x if x <= 40.0 => 0.0,
+        x if x >= 70.0 => 1024.0,
+        _ => (temperature - 40.0) * 34.13
+    }.ceil() as u16
 }
 
 /// 编码数据包
@@ -54,7 +56,7 @@ fn pwm(temperature: f32) -> u16 {
 /// 后续两位为PWM速率.
 fn encoder(rate: u16) -> BytesMut {
     let mut packet = BytesMut::new();
-    packet.put_u8(1);
+    packet.put_u8(1u8);
     packet.put_u16(rate);
     packet
 }
@@ -64,8 +66,7 @@ fn encoder(rate: u16) -> BytesMut {
 /// 每隔1s读取一次核心温度并计算PWM
 /// 速率发送给远端单片机端口.
 fn poll(socket: &mut UdpSocket, addr: &str) -> Result<()> {
-    let rate = pwm(temperature()?);
-    let packet = encoder(rate);
+    let packet = encoder(pwm(temperature()?));
     socket.send_to(&packet, addr)?;
     sleep(Duration::from_secs(1));
     Ok(())
