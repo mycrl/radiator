@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd report
-rm -rf target
+rm -rf ./target
 cargo build --release
 cp ./target/release/report /usr/local/bin/rpifanpwm
 cd ../
