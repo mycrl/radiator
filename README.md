@@ -29,7 +29,7 @@ export RADIATOR_DELAY=10
 
 ```sh
 ./install.sh
-systemdctl status radiator.service
+systemctl status radiator.service
 ```
 
 服务将自动安装并保持开机自动启动.
