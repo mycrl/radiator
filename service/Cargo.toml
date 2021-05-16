@@ -1,9 +1,8 @@
 [package]
-name = "report"
+name = "service"
 version = "0.1.0"
 authors = ["Mr.Panda <xivistudios@gmail.com>"]
 edition = "2018"
 
 [dependencies]
 anyhow = "1.0"
-bytes = "0.5.4"

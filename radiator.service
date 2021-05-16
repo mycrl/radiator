@@ -1,0 +1,14 @@
+[Unit]
+Description=RaspberryPi Auto Fan Control Service.
+Documentation=https://github.com/quasipaa/Radiator
+
+[Service]
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/local/bin/radiator
+ExecReload=/usr/local/bin/radiator
+ExecStop=killall radiator
+TimeoutStartSec=0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

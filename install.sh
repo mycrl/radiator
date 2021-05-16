@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cd report
+cd service
 rm -rf ./target
 cargo build --release
-cp ./target/release/report /usr/local/bin/rpifanpwm
+cp ./target/release/service /usr/local/bin/radiator
 cd ../
-cp ./rpifanpwm.service /etc/systemd/system/rpifanpwm.service
-systemctl enable rpifanpwm.service
-systemctl start rpifanpwm.service
+cp ./radiator.service /etc/systemd/system/radiator.service
+systemctl enable radiator.service
+systemctl start radiator.service
